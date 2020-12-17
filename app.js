@@ -1,4 +1,4 @@
-const cleWeather = "7ee9b5f8b1616f1e273286c2435486db";
+import { cleWeather } from "./keyApi.js";
 
 const weatherIcons = {
   Rain: "wi wi-day-rain",
@@ -21,8 +21,6 @@ let conditionsClass = document.querySelectorAll(".conditionsClass");
 let hourName = document.querySelectorAll(".hour-name-prev");
 let hourValue = document.querySelectorAll(".hour-value-prev");
 
-main();
-
 // Fonction pour retourner la première des mots en majuscule
 function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);
@@ -40,7 +38,7 @@ async function main(withIP = true) {
 
     // Obtenir la ville correspondante à l'adresse IP
     city = await fetch(
-      `https://api.ipstack.com/${ip}?access_key=c44aecdf2373db8de5864d356f3d7ae8`
+      `http://api.ipstack.com/${ip}?access_key=c44aecdf2373db8de5864d356f3d7ae8`
     )
       .then((res) => res.json())
       .then((data) => data.city);
@@ -155,12 +153,4 @@ searchCity.addEventListener("input", (e) => {
   // city.textContent = searchCity.value;
 });
 
-// API Google maps Places pour les suggestions de villes
-function activatePlacesSearch() {
-  var input = document.getElementById("search-city");
-  var options = {
-    types: ["(cities)"],
-    componentRestrictions: { country: "fr" },
-  };
-  var autocomplete = new google.maps.places.Autocomplete(input, options);
-}
+main();
