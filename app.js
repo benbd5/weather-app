@@ -40,7 +40,7 @@ async function main(withIP = true) {
 
     // Obtenir la ville correspondante à l'adresse IP
     city = await fetch(
-      `http://api.ipstack.com/${ip}?access_key=c44aecdf2373db8de5864d356f3d7ae8`
+      `https://api.ipstack.com/${ip}?access_key=c44aecdf2373db8de5864d356f3d7ae8`
     )
       .then((res) => res.json())
       .then((data) => data.city);
@@ -51,7 +51,7 @@ async function main(withIP = true) {
 
   // Weather
   const weather = await fetch(
-    `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${cleWeather}&units=metric&lang=fr`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${cleWeather}&units=metric&lang=fr`
   )
     .then((res) => {
       if (res.ok) {
