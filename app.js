@@ -21,6 +21,8 @@ let conditionsClass = document.querySelectorAll(".conditionsClass");
 let hourName = document.querySelectorAll(".hour-name-prev");
 let hourValue = document.querySelectorAll(".hour-value-prev");
 
+main();
+
 // Fonction pour retourner la première des mots en majuscule
 function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);
@@ -162,5 +164,3 @@ function activatePlacesSearch() {
   };
   var autocomplete = new google.maps.places.Autocomplete(input, options);
 }
-
-main();
