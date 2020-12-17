@@ -9,4 +9,4 @@ API utilisées :
 
 
 
-benbd5.github.io/weather-app/
+https://benbd5.github.io/weather-app/
