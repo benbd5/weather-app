@@ -37,11 +37,21 @@ async function main(withIP = true) {
       .then((data) => data.ip);
 
     // Obtenir la ville correspondante à l'adresse IP
-    city = await fetch(
-      `http://api.ipstack.com/${ip}?access_key=c44aecdf2373db8de5864d356f3d7ae8`
+    /*city = await fetch(
+      `http://api.ipstack.com/${ip}?access_key=c44aecdf2373db8de5864d356f3d7ae8` // fonction qu'en local car sinon pas gratuit, donc pas d'https
     )
       .then((res) => res.json())
       .then((data) => data.city);
+  } else {
+    city = document.querySelector("#city").textContent;
+    // city.textContent = searchCity.value; //TEST qui fonctionne (valeur changée mais n'actualise pas l'api météo)
+  }*/
+
+    city = await fetch(
+      `https://geo.ipify.org/api/v1?apiKey=at_UXDEW2rbL9g88MiLIlzft59rxoCfT&ipAddress=${ip}` // gratuit et https mais imprécis
+    )
+      .then((res) => res.json())
+      .then((data) => data.location.city);
   } else {
     city = document.querySelector("#city").textContent;
     // city.textContent = searchCity.value; //TEST qui fonctionne (valeur changée mais n'actualise pas l'api météo)
