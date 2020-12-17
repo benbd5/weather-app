@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css"
+        integrity="sha512-Fdq8QvrEd3TD4heN8gNTOl79sAZR7zsiHIDQbE5eEBxx8pPfb/yJHaBWxhoG7SNcQiBmrrUHlg5TiNX4ovt6Jg=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Weather API</title>
+</head>
+
+<body>
+
+    <!-- Current Weather -->
+    <section id="app">
+        <div class="tooltip-display">
+            <input type="text" id="search-city" onFocus="javascript:this.value=''">
+            <button><i class="fas fa-search"></i></button>
+            <span class="tooltip">Saisissez une autre ville</span>
+        </div>
+        <h1>
+            <span id="city"></span>
+        </h1>
+        <i class="wi wi-day-rain"></i>
+        <h2>
+            <span id="temperature"></span> C° (<span id="conditions">Ciel dégagé</span>)
+        </h2>
+    </section>
+
+
+    <div class="five-days">
+        <div class="bloc-h">
+            <p class="hour-name-prev"></p>
+            <p class="hour-value-prev"></p>
+            <i class="wi wi-day-rain"></i>
+            <span class="conditionsClass">Ciel dégagé</span>
+        </div>
+        <div class="bloc-h">
+            <p class="hour-name-prev"></p>
+            <p class="hour-value-prev"></p>
+            <i class="wi"></i>
+            <span class="conditionsClass">Ciel dégagé</span>
+        </div>
+        <div class="bloc-h">
+            <p class="hour-name-prev"></p>
+            <p class="hour-value-prev"></p>
+            <i class="wi"></i>
+            <span class="conditionsClass">Ciel dégagé</span>
+        </div>
+        <div class="bloc-h">
+            <p class="hour-name-prev"></p>
+            <p class="hour-value-prev"></p>
+            <i class="wi wi-day-rain"></i>
+            <span class="conditionsClass">Ciel dégagé</span>
+        </div>
+        <div class="bloc-h">
+            <p class="hour-name-prev"></p>
+            <p class="hour-value-prev"></p>
+            <i class="wi wi-day-rain"></i>
+            <span class="conditionsClass">Ciel dégagé</span>
+        </div>
+        <div class="bloc-h">
+            <p class="hour-name-prev"></p>
+            <p class="hour-value-prev"></p>
+            <i class="wi wi-day-rain"></i>
+            <span class="conditionsClass">Ciel dégagé</span>
+        </div>
+        <div class="bloc-h">
+            <p class="hour-name-prev"></p>
+            <p class="hour-value-prev"></p>
+            <i class="wi wi-day-rain"></i>
+            <span class="conditionsClass">Ciel dégagé</span>
+        </div>
+    </div>
+
+
+    <!-- Weather 5days / 3hours -->
+    <!-- <section id="five-days">
+        <div class="day">
+            <h2 class="day-date">Mercredi</h2>
+            <div class="hours">
+                <p class="hour-name-prev">03h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">06h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">09h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">12h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">15h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">18h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">21h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">00h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+        </div>
+        <div class="day">
+            <h2 class="day-date">Jeudi</h2>
+            <div class="hours">
+                <p class="hour-name-prev">03h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">06h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">09h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">12h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">15h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">18h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">21h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">00h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+        </div>
+        <div class="day">
+            <h2 class="day-date">Vendredi</h2>
+            <div class="hours">
+                <p class="hour-name-prev">03h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">06h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">09h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">12h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">15h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">18h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">21h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">00h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+        </div>
+        <div class="day">
+            <h2 class="day-date">Samedi</h2>
+            <div class="hours">
+                <p class="hour-name-prev">03h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">06h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">09h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">12h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">15h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">18h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">21h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">00h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+        </div>
+        <div class="day">
+            <h2 class="day-date">Dimanche</h2>
+            <div class="hours">
+                <p class="hour-name-prev">03h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">06h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">09h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">12h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">15h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">18h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">21h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+            <div class="hours">
+                <p class="hour-name-prev">00h</p>
+                <p class="hour-value-prev"></p>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- API GOOGLE PLACES SUGGESTIONS -->
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC86N0t8ACPwQOm7QWILKeg_1LXTaDfRBI&libraries=places&callback=activatePlacesSearch">
+    </script>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>

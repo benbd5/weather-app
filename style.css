@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(14, 24, 56);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    flex-direction: column;
+}
+
+h1 {
+    position: relative;
+    font-size: 30px;
+}
+
+.tooltip {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 60px;
+    color: white;
+    background-color: rgb(22, 95, 95);
+    border-radius: 5px;
+    padding: 10px;
+    transition: opacity .3s, top .5s;
+}
+
+.tooltip-display:hover .tooltip {
+    top: -50px;
+    opacity: 1;
+    font-size: 12px;
+}
+
+button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+input {
+    background: transparent;
+    border: none;
+    color: white;
+    /* text-align: center; */
+}
+
+.tooltip-display {
+    position: relative;
+}
+
+.five-days {
+    display: flex;
+}
+
+.bloc-h {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 7px;
+}
