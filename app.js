@@ -1,5 +1,4 @@
-import { cleWeather } from "./keyApi.js";
-// const cleWeather = "7ee9b5f8b1616f1e273286c2435486db";
+const cleWeather = "7ee9b5f8b1616f1e273286c2435486db";
 
 const weatherIcons = {
   Rain: "wi wi-day-rain",
