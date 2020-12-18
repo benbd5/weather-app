@@ -54,12 +54,12 @@ async function main(withIP = true) {
       .then((data) => data.location.city);
   } else {
     city = document.querySelector("#city").textContent;
-    // city.textContent = searchCity.value; //TEST qui fonctionne (valeur changée mais n'actualise pas l'api météo)
   }
 
   // Weather
   const weather = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${cleWeather}&units=metric&lang=fr`
+    //`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude={part}&appid=${cleWeather}`
   )
     .then((res) => {
       if (res.ok) {
@@ -164,3 +164,20 @@ searchCity.addEventListener("input", (e) => {
 });
 
 main();
+
+/*if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      let long = position.coords.longitude;
+      let lat = position.coords.latitude;
+      appelApi(long, lat);
+    },
+    () => {
+      console.log("non activé");
+    }
+  );
+}
+
+function appelApi(long, lat) {
+  console.log(long, lat);
+}*/
