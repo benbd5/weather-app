@@ -15,6 +15,7 @@ const city = document.querySelector("#city");
 const temperature = document.querySelector("#temperature");
 const conditions = document.querySelector("#conditions");
 const icons = document.querySelectorAll("i.wi");
+const icons1 = document.querySelector("i.wi");
 const btn = document.querySelector("button");
 
 let conditionsClass = document.querySelectorAll(".conditionsClass");
@@ -26,6 +27,13 @@ function capitalize(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
 
+/* 
+** Pour afficher une ville par défaut car api adresse ip bloquée avec les adBlock
+city.textContent = "La Roche-Sur-Yon";
+main(false);
+**
+*/
+
 // la fonction main fonctionne avec l'adresse ip par défaut
 async function main(withIP = true) {
   let city;
@@ -35,17 +43,6 @@ async function main(withIP = true) {
     const ip = await fetch("https://api.ipify.org?format=json")
       .then((res) => res.json())
       .then((data) => data.ip);
-
-    // Obtenir la ville correspondante à l'adresse IP
-    /*city = await fetch(
-      `http://api.ipstack.com/${ip}?access_key=c44aecdf2373db8de5864d356f3d7ae8` // fonction qu'en local car sinon pas gratuit, donc pas d'https
-    )
-      .then((res) => res.json())
-      .then((data) => data.city);
-  } else {
-    city = document.querySelector("#city").textContent;
-    // city.textContent = searchCity.value; //TEST qui fonctionne (valeur changée mais n'actualise pas l'api météo)
-  }*/
 
     city = await fetch(
       `https://geo.ipify.org/api/v1?apiKey=at_UXDEW2rbL9g88MiLIlzft59rxoCfT&ipAddress=${ip}` // gratuit et https mais imprécis
@@ -85,6 +82,7 @@ function displayWeatherInfo(data) {
   temperature.textContent = temperatureWeather;
   conditions.textContent = capitalize(descriptionWeather);
   icons.className = weatherIcons[conditionsWeather];
+  icons1.className = weatherIcons[conditionsWeather];
 
   // Boucle for pour afficher les éléments toutes les 3h / 5 jours
   let actualHour = new Date().getHours();
